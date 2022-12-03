@@ -6,6 +6,8 @@ import { typeDefs } from './typeDefs';
 import { resolvers } from './resolvers';
 import { Movie as MovieModel } from './models/movie';
 import Movies from './dataSources/movies';
+import {Event as EventModel } from './models/events';
+import Events from './dataSources/events';
 
 const uri = process.env.MONGODB_URI
 const main = async () => {
@@ -18,6 +20,7 @@ main()
 
 const dataSources = () => ({
   movies: new Movies(MovieModel),
+  events: new Events(EventModel)
 });
 
 const server = new ApolloServer({ typeDefs, resolvers, dataSources })
