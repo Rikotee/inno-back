@@ -12,4 +12,5 @@ export default class Users extends MongoDataSource {
   async createUser({ username, password, admin }) {
     return await this.model.create({ username, password, admin });
   }
+
 }

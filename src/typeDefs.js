@@ -42,6 +42,7 @@ export const typeDefs = gql`
 
     getUsers: [User!]!,
     getUser(id: ID!): User!
+    login(username: String!, password: String!): User
   }
 
   type Mutation {

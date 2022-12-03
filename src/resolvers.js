@@ -28,6 +28,10 @@ export const resolvers = {
       getUser: async (_, { id }, { dataSources: { users } }) => {
         return users.getUser(id);
       },
+      login: async (parent, args, { req }) => {
+        req.body = args;
+        return await login(req);
+      },
     },
     Mutation: {
 
