@@ -1,8 +1,3 @@
-import bcrypt from 'bcrypt';
-import { login } from './auth';
-import User from './models/users';
-import { AuthenticationError } from 'apollo-server-express';
-
 export const resolvers = {
     Query: {
 
@@ -33,10 +28,7 @@ export const resolvers = {
       getUser: async (_, { id }, { dataSources: { users } }) => {
         return users.getUser(id);
       },
-      login: async (parent, args, { req }) => {
-        req.body = args;
-        return await login(req);
-      },
+
     },
     Mutation: {
 
@@ -68,19 +60,5 @@ export const resolvers = {
         return users.createUser(args)
       },
 
-      registerUser: async (parent, args) => {
-        try {
-          const hash = await bcrypt.hash(args.password, 12);
-          const userWithHash = {
-            ...args,
-            password: hash,
-          };
-          const newUser = new User(userWithHash);
-          const result = await newUser.save();
-          return result;
-        } catch (err) {
-          throw new Error(err);
-        }
-      },
     }
   }
