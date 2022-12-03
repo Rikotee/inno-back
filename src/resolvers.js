@@ -42,10 +42,16 @@ export const resolvers = {
       createNew: async (_, args, { dataSources: { news } }) => {
         return news.createNew(args)
       },
+      deleteNews: async (_, { id }, { dataSources: { news } }) => {
+        return news.deleteNews(id);
+      },
 
 
       createFeedback: async (_, args, { dataSources: { feedbacks } }) => {
         return feedbacks.createFeedback(args)
+      },
+      deleteFeedback: async (_, { id }, { dataSources: { feedbacks } }) => {
+        return feedbacks.deleteFeedback(id);
       },
 
       

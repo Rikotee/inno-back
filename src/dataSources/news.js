@@ -12,4 +12,8 @@ export default class News extends MongoDataSource {
   async createNew({ subject, news, date }) {
     return await this.model.create({ subject, news, date });
   }
+
+  async deleteNews(id) {
+    return await this.model.findByIdAndDelete(id);
+  }
 }

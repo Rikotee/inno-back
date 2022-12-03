@@ -12,4 +12,8 @@ export default class Feedbacks extends MongoDataSource {
   async createFeedback({ subject, feedback, email, date }) {
     return await this.model.create({ subject, feedback, email, date });
   }
+
+  async deleteFeedback(id) {
+    return await this.model.findByIdAndDelete(id);
+  }
 }
