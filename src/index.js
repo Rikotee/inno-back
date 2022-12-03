@@ -10,6 +10,8 @@ import {Feedback as FeedbackModel } from './models/feedbacks';
 import Feedback from './dataSources/feedback';
 import {User as UserkModel } from './models/users';
 import User from './dataSources/users';
+import {New as NewsModel } from './models/news';
+import New from './dataSources/news';
 
 const uri = process.env.MONGODB_URI
 const main = async () => {
@@ -22,6 +24,7 @@ main()
 
 const dataSources = () => ({
   events: new Events(EventModel),
+  news: new New(NewsModel),
   feedbacks: new Feedback(FeedbackModel),
   users: new User(UserkModel),
 });

@@ -8,6 +8,12 @@ export const resolvers = {
         return events.getEvent(id);
       },
 
+      getNews: async (_, _args, { dataSources: { news } }) => {
+        return news.getNews();
+      },
+      getNew: async (_, { id }, { dataSources: { news } }) => {
+        return news.getNew(id);
+      },
 
       getFeedbacks: async (_, _args, { dataSources: { feedbacks } }) => {
         return feedbacks.getFeedbacks();
@@ -15,7 +21,6 @@ export const resolvers = {
       getFeedback: async (_, { id }, { dataSources: { feedbacks } }) => {
         return feedbacks.getFeedback(id);
       },
-
 
       getUsers: async (_, _args, { dataSources: { users } }) => {
         return users.getUsers();
@@ -28,6 +33,11 @@ export const resolvers = {
 
       createEvent: async (_, args, { dataSources: { events } }) => {
         return events.createEvent(args)
+      },
+
+
+      createNew: async (_, args, { dataSources: { news } }) => {
+        return news.createNew(args)
       },
 
 
