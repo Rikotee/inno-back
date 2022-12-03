@@ -1,13 +1,6 @@
 import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
-  type Movie {
-    _id: ID!
-    title: String!
-    rating: Float!
-    year: Int!
-  }
-
   type Event {
     _id: ID!
     subject: String!
@@ -15,16 +8,35 @@ export const typeDefs = gql`
     date: String!
   }
 
-  type Query {
-    getMovies: [Movie!]!,
-    getMovie(id: ID!): Movie!
+  type Feedback {
+    _id: ID!
+    subject: String!
+    feedback: String!
+    email: String
+    date: String!
+  }
 
+  type User {
+    _id: ID!
+    Username: String!
+    password: String!
+    admin: Boolean!
+  }
+
+  type Query {
     getEvents: [Event!]!,
     getEvent(id: ID!): Event!
+
+    getFeedbacks: [Feedback!]!,
+    getFeedback(id: ID!): Feedback!
+
+    getUsers: [User!]!,
+    getUser(id: ID!): User!
   }
 
   type Mutation {
-    createMovie(title: String!, rating: Float!, year: Int!): Movie!
     createEvent(subject: String!, event: String!, date: String!): Event!
+    createFeedback(subject: String!, feedback: String!, email: String, date: String!): Feedback!
+    createUser(username: String!, password: String!, admin: Boolean!): User!
   }
 `;

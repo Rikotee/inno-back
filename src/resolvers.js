@@ -1,26 +1,43 @@
 export const resolvers = {
     Query: {
-      getMovies: async (_, _args, { dataSources: { movies } }) => {
-        return movies.getMovies();
-      },
-      getMovie: async (_, { id }, { dataSources: { movies } }) => {
-        return movies.getMovie(id);
-      },
 
       getEvents: async (_, _args, { dataSources: { events } }) => {
         return events.getEvents();
       },
       getEvent: async (_, { id }, { dataSources: { events } }) => {
         return events.getEvent(id);
-      }
+      },
+
+
+      getFeedbacks: async (_, _args, { dataSources: { feedbacks } }) => {
+        return feedbacks.getFeedbacks();
+      },
+      getFeedback: async (_, { id }, { dataSources: { feedbacks } }) => {
+        return feedbacks.getFeedback(id);
+      },
+
+
+      getUsers: async (_, _args, { dataSources: { users } }) => {
+        return users.getUsers();
+      },
+      getUser: async (_, { id }, { dataSources: { users } }) => {
+        return users.getUser(id);
+      },
     },
     Mutation: {
-      createMovie: async (_, args, { dataSources: { movies } }) => {
-        return movies.createMovie(args)
-      },
 
       createEvent: async (_, args, { dataSources: { events } }) => {
         return events.createEvent(args)
-      }
+      },
+
+
+      createFeedback: async (_, args, { dataSources: { feedbacks } }) => {
+        return feedbacks.createFeedback(args)
+      },
+
+      
+      createUser: async (_, args, { dataSources: { users } }) => {
+        return users.createUser(args)
+      },
     }
   }
