@@ -25,7 +25,7 @@ export const typeDefs = gql`
 
   type User {
     _id: ID!
-    Username: String!
+    username: String!
     password: String!
     admin: Boolean!
   }
@@ -49,5 +49,7 @@ export const typeDefs = gql`
     createNew(subject: String!, news: String!, date: String!): New!
     createFeedback(subject: String!, feedback: String!, email: String, date: String!): Feedback!
     createUser(username: String!, password: String!, admin: Boolean!): User!
+
+    deleteEvent(id: ID!, subject: String, event: String, date: String): Event!
   }
 `;

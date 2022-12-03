@@ -34,6 +34,9 @@ export const resolvers = {
       createEvent: async (_, args, { dataSources: { events } }) => {
         return events.createEvent(args)
       },
+      deleteEvent: async (_, { id }, { dataSources: { events } }) => {
+        return events.deleteEvent(id);
+      },
 
 
       createNew: async (_, args, { dataSources: { news } }) => {
