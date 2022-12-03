@@ -1,3 +1,8 @@
+import bcrypt from 'bcrypt';
+import { login } from './auth';
+import User from './models/users';
+import { AuthenticationError } from 'apollo-server-express';
+
 export const resolvers = {
     Query: {
 
@@ -61,6 +66,21 @@ export const resolvers = {
       
       createUser: async (_, args, { dataSources: { users } }) => {
         return users.createUser(args)
+      },
+
+      registerUser: async (parent, args) => {
+        try {
+          const hash = await bcrypt.hash(args.password, 12);
+          const userWithHash = {
+            ...args,
+            password: hash,
+          };
+          const newUser = new User(userWithHash);
+          const result = await newUser.save();
+          return result;
+        } catch (err) {
+          throw new Error(err);
+        }
       },
     }
   }
