@@ -48,7 +48,7 @@ export const typeDefs = gql`
     createEvent(subject: String!, event: String!, date: String!): Event!
     createNew(subject: String!, news: String!, date: String!): New!
     createFeedback(subject: String!, feedback: String!, email: String, date: String!): Feedback!
-    createUser(username: String!, password: String!, admin: Boolean!): User!
+    createUser(username: String!, password: String!, admin: Boolean! = false): User!
 
     deleteEvent(id: ID!, subject: String, event: String, date: String): Event!
     deleteNews(id: ID!, subject: String, news: String, date: String): New!
