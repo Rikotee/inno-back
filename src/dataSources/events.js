@@ -10,7 +10,7 @@ export default class Events extends MongoDataSource {
   }
 
   async createEvent({ subject, event, date }) {
-    return await this.model.create({ subject, event, date });
+    return await this.model.create({ subject, event, date, eventdate });
   }
 
   async deleteEvent(id) {

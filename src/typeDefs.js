@@ -6,6 +6,7 @@ export const typeDefs = gql`
     subject: String!
     event: String!
     date: String!
+    eventdate: String!
   }
 
   type New {
@@ -45,12 +46,12 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    createEvent(subject: String!, event: String!, date: String!): Event!
+    createEvent(subject: String!, event: String!, date: String!, eventdate: String!): Event!
     createNew(subject: String!, news: String!, date: String!): New!
     createFeedback(subject: String!, feedback: String!, email: String, date: String!): Feedback!
     createUser(username: String!, password: String!, admin: Boolean! = false): User!
 
-    deleteEvent(id: ID!, subject: String, event: String, date: String): Event!
+    deleteEvent(id: ID!, subject: String, event: String, date: String, eventdate: String): Event!
     deleteNews(id: ID!, subject: String, news: String, date: String): New!
     deleteFeedback(id: ID!, subject: String, feedback: String, email: String, date: String): Feedback!
   }
